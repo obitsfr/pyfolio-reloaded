@@ -548,6 +548,8 @@ def show_perf_stats(
     live_start_date=None,
     bootstrap=False,
     header_rows=None,
+    period=DAILY,
+    annualization=None
 ):
     """
     Prints some performance metrics of the strategy.
@@ -598,6 +600,8 @@ def show_perf_stats(
         positions=positions,
         transactions=transactions,
         turnover_denom=turnover_denom,
+        period=period,
+        annualization=annualization
     )
 
     date_rows = OrderedDict()

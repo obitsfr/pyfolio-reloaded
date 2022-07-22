@@ -86,6 +86,8 @@ def create_full_tear_sheet(
     pos_in_dollars=True,
     header_rows=None,
     factor_partitions=FACTOR_PARTITIONS,
+    period = DAILY,
+    annualization=None
 ):
     """
     Generate a number of tear sheets that are useful
@@ -207,6 +209,8 @@ def create_full_tear_sheet(
         turnover_denom=turnover_denom,
         header_rows=header_rows,
         set_context=set_context,
+        period=period,
+        annualization=annualization
     )
 
     create_interesting_times_tear_sheet(
@@ -275,6 +279,8 @@ def create_simple_tear_sheet(
     live_start_date=None,
     turnover_denom="AGB",
     header_rows=None,
+    period=DAILY,
+    annualization=None
 ):
     """
     Simpler version of create_full_tear_sheet; generates summary performance
@@ -376,6 +382,8 @@ def create_simple_tear_sheet(
         turnover_denom=turnover_denom,
         live_start_date=live_start_date,
         header_rows=header_rows,
+        period=period,
+        annualization=annualization
     )
 
     fig = plt.figure(figsize=(14, vertical_sections * 6))
@@ -475,6 +483,8 @@ def create_returns_tear_sheet(
     turnover_denom="AGB",
     header_rows=None,
     return_fig=False,
+    period=DAILY,
+    annualization=None
 ):
     """
     Generate a number of plots for analyzing a strategy's returns.
@@ -533,6 +543,8 @@ def create_returns_tear_sheet(
         bootstrap=bootstrap,
         live_start_date=live_start_date,
         header_rows=header_rows,
+        period=period,
+        annualization=annualization
     )
 
     plotting.show_worst_drawdown_periods(returns)
