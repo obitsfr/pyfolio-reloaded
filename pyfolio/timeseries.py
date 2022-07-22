@@ -669,6 +669,15 @@ SIMPLE_STAT_FUNCS = [
     value_at_risk,
 ]
 
+PERIOD_STAT_FUNCS = [
+    ep.annual_return,
+    ep.annual_volatility,
+    ep.sharpe_ratio,
+    ep.calmar_ratio,
+    ep.omega_ratio,
+    ep.sortino_ratio,
+]
+
 FACTOR_STAT_FUNCS = [
     ep.alpha,
     ep.beta,
@@ -700,6 +709,8 @@ def perf_stats(
     positions=None,
     transactions=None,
     turnover_denom="AGB",
+    period=DAILY,
+    annualization=None
 ):
     """
     Calculates various performance metrics of a strategy, for use in
@@ -733,7 +744,10 @@ def perf_stats(
 
     stats = pd.Series()
     for stat_func in SIMPLE_STAT_FUNCS:
-        stats[STAT_FUNC_NAMES[stat_func.__name__]] = stat_func(returns)
+        if stat_func in PERIOD_STAT_FUNCS:
+            stats[STAT_FUNC_NAMES[stat_func.__name__]] = stat_func(returns, period=period, annualization=annualization)
+        else:
+            stats[STAT_FUNC_NAMES[stat_func.__name__]] = stat_func(returns)
 
     if positions is not None:
         stats["Gross leverage"] = gross_lev(positions).mean()
