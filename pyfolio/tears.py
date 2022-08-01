@@ -30,6 +30,8 @@ from . import round_trips
 from . import timeseries
 from . import txn
 from . import utils
+from .utils import DAILY
+
 
 FACTOR_PARTITIONS = {
     "style": [
