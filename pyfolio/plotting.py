@@ -548,7 +548,7 @@ def show_perf_stats(
     live_start_date=None,
     bootstrap=False,
     header_rows=None,
-    period=period,
+    period=None,
     annualization=None
 ):
     """

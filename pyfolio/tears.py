@@ -16,7 +16,7 @@ import warnings
 from time import time
 
 import empyrical as ep
-from IPython.display import display, Markdown
+# from IPython.display import display, Markdown
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -30,7 +30,7 @@ from . import round_trips
 from . import timeseries
 from . import txn
 from . import utils
-from .utils import DAILY
+# from .utils import DAILY
 
 
 FACTOR_PARTITIONS = {
@@ -88,7 +88,7 @@ def create_full_tear_sheet(
     pos_in_dollars=True,
     header_rows=None,
     factor_partitions=FACTOR_PARTITIONS,
-    period = DAILY,
+    period=DAILY,
     annualization=None
 ):
     """
